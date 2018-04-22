@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  buildbot-master:
+    container_name: 'buildbot-master'
+    build: ./master
+    command: buildbot start --nodaemon master
+    networks:
+      - buildbot-network
+    ports:
+     - "8010:8010"
+  buildbot-worker:
+    container_name: 'buildbot-worker'
+    build: ./worker
+    depends_on:
+      - buildbot-master
+    command: ./wait-for-container-port.sh && buildbot-worker start --nodaemon worker
+    networks:
+      - buildbot-network
+
+networks:
+  buildbot-network:
+

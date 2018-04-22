@@ -1,0 +1,2 @@
+buildbot-worker
+setuptools-trial # TODO remove, required for `runtests` build
