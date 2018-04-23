@@ -10,7 +10,6 @@ services:
     ports:
      - "8010:8010"
   buildbot-worker:
-    container_name: 'buildbot-worker'
     build: ./worker
     depends_on:
       - buildbot-master
