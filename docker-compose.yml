@@ -14,7 +14,7 @@ services:
     build: ./worker
     depends_on:
       - buildbot-master
-    command: ./wait-for-container-port.sh && buildbot-worker start --nodaemon worker
+    command: bash -c './wait-for-container-port.sh && buildbot-worker start --nodaemon worker'
     networks:
       - buildbot-network
 
